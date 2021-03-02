@@ -59,11 +59,31 @@ namespace Assignment_7_Joisah_Sarles
             app.UseEndpoints(endpoints =>
             {
 
+                //Add endpoints for all possiblities of what is put into the route
+                endpoints.MapControllerRoute(
+                    "catpage",
+                    "{category}/{page:int}",
+                    new { Controller = "Home", action = "Index" }
+                    );
+
+                endpoints.MapControllerRoute(
+                    "page",
+                    "{page:int}",
+                    new { Controller = "Home", action = "Index" }
+                    );
+
+                endpoints.MapControllerRoute(
+                    "category",
+                    "{category}",
+                    new { Controller = "Home", action = "Index", page = 1 }
+                    );
+
                 // Changed the route so that it shows as /Books/P1, /P2, /P3... and so on
                 endpoints.MapControllerRoute(
                     "pagination",
                     "books/P{page}",
-                    new { Controller = "Home", action = "Index" });
+                    new { Controller = "Home", action = "Index" }
+                    );
 
                 endpoints.MapDefaultControllerRoute();
             });

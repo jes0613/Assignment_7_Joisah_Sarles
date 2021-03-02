@@ -25,13 +25,14 @@ namespace Assignment_7_Joisah_Sarles.Controllers
         }
 
         // sends the _repo.books to the view to be used to print on the index page
-        public IActionResult Index(int page = 1)
+        public IActionResult Index(string category, int page = 1)
         {
 
-            //UPdate the new to include the booklistviewmodel
+            //UPdate the new to include category filtering
             return View(new BookListViewModel
             {
                 Books = _repo.books
+                    .Where(p => category == null || p.category == category)
                     .OrderBy(p => p.bookId)
                     .Skip((page - 1) * PageSize)
                     .Take(PageSize)
@@ -41,7 +42,9 @@ namespace Assignment_7_Joisah_Sarles.Controllers
                     CurrentPage = page,
                     ItemsPerPage = PageSize,
                     TotalNumItems = _repo.books.Count()
-                }
+                },
+                CurrentCategory = category
+
             });
 
         }
