@@ -68,7 +68,7 @@ namespace Assignment_7_Joisah_Sarles
 
                 endpoints.MapControllerRoute(
                     "page",
-                    "{page:int}",
+                    "Home/{page:int}",
                     new { Controller = "Home", action = "Index" }
                     );
 

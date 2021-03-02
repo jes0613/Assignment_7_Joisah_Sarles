@@ -28,7 +28,7 @@ namespace Assignment_7_Joisah_Sarles.Controllers
         public IActionResult Index(string category, int page = 1)
         {
 
-            //UPdate the new to include category filtering
+            //UPdate the new to include category filtering adn uppdates the page numbering depending on how many pages there actually are. 
             return View(new BookListViewModel
             {
                 Books = _repo.books
@@ -41,7 +41,8 @@ namespace Assignment_7_Joisah_Sarles.Controllers
                 {
                     CurrentPage = page,
                     ItemsPerPage = PageSize,
-                    TotalNumItems = _repo.books.Count()
+                    TotalNumItems = category == null ? _repo.books.Count() :
+                        _repo.books.Where (x => x.category == category).Count()
                 },
                 CurrentCategory = category
 

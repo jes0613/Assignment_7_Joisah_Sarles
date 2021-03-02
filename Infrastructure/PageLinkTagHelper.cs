@@ -32,6 +32,7 @@ namespace Assignment_7_Joisah_Sarles.Infrastructure
         [HtmlAttributeName(DictionaryAttributePrefix = "page-url-")]
         public Dictionary<string, object> PageUrlValues { get; set; } = new Dictionary<string, object>();
 
+        //Added the pageUrlValues dictionary here to use in the urlHelper.Action()
         public override void Process(TagHelperContext context, TagHelperOutput output)
         {
             IUrlHelper urlHelper = urlHelperFactory.GetUrlHelper(ViewContext);

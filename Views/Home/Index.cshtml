@@ -18,11 +18,8 @@
     <br />
     <br />
 </div>
-<div class="row m-1 p-1">
-    <div class="col-3">
-       <vc:navigation-menu />
-    </div>
-    <div class="col-9 text-center">
+<div class="text-center">
+ 
         @*Here the datafrom the database is printed*@
         @foreach (var x in Model.Books)
         {
@@ -54,9 +51,7 @@
     </div>
     @*The css for the pagination highlight is in the site.css
         I also added an if statement to the PageListTageHelper that highlights the current page*@
-    <div class=" text-center">
         <div page-model="@Model.PagingInfo" page-action="Index" page-url-category="@Model.CurrentCategory" class="paginationhighlight">
 
         </div>
-    </div>
 </div>
